@@ -1,0 +1,34 @@
+{
+  "info": {
+    "name": "engApp",
+    "description": "API collection for engApp backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:7221"
+    }
+  ],
+  "item": [
+    {
+      "name": "Weather",
+      "item": [
+        {
+          "name": "Get Weather Forecast",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/weatherforecast",
+              "host": ["{{baseUrl}}"],
+              "path": ["weatherforecast"]
+            },
+            "description": "Sample minimal API endpoint"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
