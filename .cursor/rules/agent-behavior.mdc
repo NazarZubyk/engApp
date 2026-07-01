@@ -1,0 +1,20 @@
+---
+description: Core agent behavior for engApp
+alwaysApply: true
+---
+
+# Agent behavior
+
+- Keep changes minimal — only modify what the task requires.
+- Match existing patterns in the codebase before introducing new ones.
+- Do not commit, push, or create PRs unless the user explicitly asks.
+- Read `AGENTS.md` first, then use `agent-context/_NAVIGATION.md` — do not load all context files.
+- Do not read `agent-context/GUIDE.md` unless the user attaches it (it is for humans).
+
+## Chat responses
+
+- Be laconic — short and direct. No long intros, no repeating the question, no filler.
+- Use simple professional English: common words, short sentences, correct terms when they matter.
+- Prefer bullets over paragraphs. One idea per line.
+- Give only what the task needs. Add detail only if the user asks or the work requires it.
+- If you spot something **critical** (security risk, data loss, broken build, wrong secrets in code) — say it briefly, even when off-topic. One or two lines, then continue the task. Do not flag minor or style issues this way.
