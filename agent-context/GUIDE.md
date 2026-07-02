@@ -10,7 +10,8 @@ Bookmark this page when you change code and need to know what rules to follow an
 
 | You edited… | Update these context files | Code rules to follow |
 |-------------|---------------------------|----------------------|
-| `back/Features/{Name}/` (new or changed feature) | `features/{name}.md`, one row in `_NAVIGATION.md` and `_INDEX.md` | Copy the `WeatherForecast` folder pattern. Register `Add{Name}Feature()` in `Program.cs`. |
+| You start a new backend feature | Attach `entry/backend-feature.md` + prompt | Agent creates code + context files |
+| You start a new frontend feature | Attach `entry/frontend-feature.md` + prompt | Agent creates UI + handoff if needed |
 | `back/Infrastructure/` | `back/infrastructure.md` only | Use extension methods on `IServiceCollection` / `WebApplication`. No feature logic here. |
 | `back/Program.cs` | `back/architecture.md` (only if startup order changes) | Chain `.AddInfrastructure().Add{Feature}()`. Do not register services inline. |
 | `client/src/` or `client/vite.config.ts` | `client/architecture.md` when you add routing, API client, or new patterns | Use `/api` prefix for API calls. Vite proxy points to backend HTTPS port. |
@@ -74,21 +75,37 @@ flowchart LR
 ## Part 3 — Checklist before you finish a task
 
 - [ ] Code matches the pattern in `conventions.md` or the relevant `features/*.md`
-- [ ] If you added a new feature folder, `features/{name}.md` exists
+- [ ] If you added a new feature, `features/{name}.md` and `handoff/{name}-api.md` exist
 - [ ] `_NAVIGATION.md` and `_INDEX.md` have new rows (if you added a feature or new context file)
 - [ ] You did **not** paste the same info into `AGENTS.md` or `GUIDE.md`
 - [ ] No secrets in context files (use references to `appsettings.Development.json` or `.env.example`)
 
 ---
 
-## Part 4 — How to add a new backend feature
+## Part 4 — How to start a new feature
 
-Agent topic files use lean format: no YAML frontmatter (navigation lives in `_NAVIGATION.md` only), optional one-line subtitle under the title, then `Key files` / `Patterns` / `Do / Don't`.
+No scripts — delegate to an agent. Attach one entry file + short prompt.
 
-1. Create code in `back/Features/{Name}/` (copy `WeatherForecast` structure).
-2. Add `Add{Name}Feature()` to `Program.cs`.
-3. Copy `features/_TEMPLATE.md` → `features/{name}.md` and fill it in.
-4. Add one row to `_NAVIGATION.md` and `_INDEX.md`.
+**Backend first:**
+```
+@agent-context/entry/backend-feature.md
+Feature: Words. Description: vocabulary CRUD.
+```
+
+**Frontend first (or UI after API exists):**
+```
+@agent-context/entry/frontend-feature.md
+Feature: Words. Description: word list page with add form.
+```
+
+**What the agent must leave for the next agent:**
+- `features/{kebab}.md` — feature context
+- `handoff/{kebab}-api.md` — API contract (Implemented or Expected API)
+- Updated `_NAVIGATION.md` and `_INDEX.md`
+
+**Backend went first → frontend later:** front agent reads `handoff/{kebab}-api.md` (Implemented API).
+
+**Frontend went first → backend later:** back agent reads handoff (Expected API) and implements.
 
 ---
 
@@ -107,6 +124,10 @@ Agent topic files use lean format: no YAML frontmatter (navigation lives in `_NA
 | Frontend, Vite proxy | `client/architecture.md` |
 | Docker, Postgres | `devops/local-setup.md` |
 | Reference feature example | `features/weather-forecast.md` |
+| Start new backend feature (attach for agent) | `entry/backend-feature.md` |
+| Start new frontend feature (attach for agent) | `entry/frontend-feature.md` |
+| API contract back ↔ front | `handoff/{name}-api.md` |
+| Handoff template | `handoff/_TEMPLATE-api.md` |
 | New feature template | `features/_TEMPLATE.md` |
 | Change or extend the context system (attach for agents) | `meta.md` |
 | Agent entry point (auto-loaded) | `../AGENTS.md` |
@@ -116,6 +137,7 @@ Agent topic files use lean format: no YAML frontmatter (navigation lives in `_NA
 ## Part 6 — How to use this with a new agent
 
 1. Start a new agent session — it will read `AGENTS.md` automatically.
-2. For a specific task, `@` mention one file from `_NAVIGATION.md` (e.g. `@agent-context/features/weather-forecast.md`).
-3. Do **not** attach all files — that wastes tokens.
-4. Attach `meta.md` when you want an agent to change or extend this context system. Attach `GUIDE.md` only for human-oriented explanations.
+2. **New feature:** attach `entry/backend-feature.md` or `entry/frontend-feature.md` + feature name in prompt.
+3. **Existing feature:** `@` mention `features/{name}.md` and `handoff/{name}-api.md`.
+4. Do **not** attach all files — that wastes tokens.
+5. Attach `meta.md` to change the context system. `GUIDE.md` is for you only.

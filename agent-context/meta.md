@@ -18,6 +18,12 @@ How `agent-context/` works — read this when changing or extending agent contex
 ```
 agent-context/
 ├── meta.md              ← this file
+├── entry/
+│   ├── backend-feature.md   ← attach to start back feature
+│   └── frontend-feature.md  ← attach to start front feature
+├── handoff/
+│   ├── _TEMPLATE-api.md
+│   └── {kebab}-api.md       ← created by agents per feature
 ├── _NAVIGATION.md
 ├── _INDEX.md
 ├── _TEMPLATE.md
@@ -47,7 +53,12 @@ agent-context/
 3. Add one row to `AGENTS.md` "What to read next" if agents need it often
 4. Do not duplicate content from other files
 
-**Add a feature context file:**
+**Add a feature (agent-driven — preferred):**
+1. User attaches `entry/backend-feature.md` or `entry/frontend-feature.md` + feature name in prompt
+2. Agent implements code and creates `features/{kebab}.md` + `handoff/{kebab}-api.md`
+3. Agent updates `_NAVIGATION.md` and `_INDEX.md`
+
+**Add a feature context file manually:**
 1. Copy `features/_TEMPLATE.md` → `features/{name}.md`
 2. Add row to `_NAVIGATION.md` and `_INDEX.md`
 

@@ -32,10 +32,9 @@ app.Run();
 ```
 
 **Adding a new feature:**
-1. Create `back/Features/{Name}/` with controller, service, interface, DTO, `DependencyInjection.cs`
-2. Add `using Back.Features.{Name};`
-3. Chain `.Add{Name}Feature()` in `Program.cs`
-4. Create `agent-context/features/{name}.md` and update `_NAVIGATION.md` + `_INDEX.md`
+1. User attaches `agent-context/entry/backend-feature.md` — agent follows that checklist
+2. Or manually: create `back/Features/{Name}/`, register in `Program.cs`
+3. Agent creates `features/{kebab}.md`, `handoff/{kebab}-api.md`, updates nav/index
 
 ## Do / Don't
 

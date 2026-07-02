@@ -20,6 +20,9 @@ Monorepo: .NET 10 Web API (`back/`) + React/Vite SPA (`client/`) + Postgres via 
 | Coding patterns / naming | `agent-context/conventions.md` |
 | Repo layout, ports, run commands | `agent-context/monorepo.md` |
 | Add or change an API feature | `conventions.md` → `back/architecture.md` → `features/_TEMPLATE.md` |
+| **Start new backend feature** (user attaches entry) | `entry/backend-feature.md` |
+| **Start new frontend feature** (user attaches entry) | `entry/frontend-feature.md` |
+| API contract between back and front | `handoff/{feature-name}-api.md` |
 | DB, DI, middleware | `devops/local-setup.md` → `back/infrastructure.md` |
 | Frontend / API proxy | `client/architecture.md` |
 | WeatherForecast sample | `features/weather-forecast.md` |

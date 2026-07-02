@@ -4,8 +4,10 @@ Read `AGENTS.md` first, then open **one row** from this table.
 
 | If you need to… | Read (in order) |
 |-----------------|-----------------|
-| Add a new API feature | `conventions.md` → `back/architecture.md` → `features/_TEMPLATE.md` |
-| Change an existing API feature | `features/{feature-name}.md` → `conventions.md` if unsure about patterns |
+| **Start new backend feature** (entry attached) | `entry/backend-feature.md` |
+| **Start new frontend feature** (entry attached) | `entry/frontend-feature.md` |
+| Add a new API feature (no entry) | `conventions.md` → `back/architecture.md` → `features/_TEMPLATE.md` |
+| Change an existing API feature | `features/{feature-name}.md` + `handoff/{feature-name}-api.md` |
 | Fix DB connection or Postgres setup | `devops/local-setup.md` → `back/infrastructure.md` |
 | Change DI, middleware, or infrastructure | `back/infrastructure.md` |
 | Understand backend startup | `back/architecture.md` |
