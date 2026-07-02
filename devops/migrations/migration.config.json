@@ -1,0 +1,6 @@
+{
+  "migrations-dir": "migrations",
+  "migrations-table": "schema_migrations",
+  "migration-file-language": "sql",
+  "migration-filename-format": "index"
+}

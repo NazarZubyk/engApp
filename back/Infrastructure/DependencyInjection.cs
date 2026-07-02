@@ -1,3 +1,4 @@
+using Back.Infrastructure.Auth;
 using Back.Infrastructure.Persistence;
 
 namespace Back.Infrastructure;
@@ -9,6 +10,9 @@ public static class DependencyInjection
         IConfiguration configuration)
     {
         services.AddDatabase(configuration);
+        services.AddJwtAuthentication(configuration);
+        services.AddScoped<IAdminRepository, AdminRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
         return services;
     }
 }

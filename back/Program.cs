@@ -1,3 +1,4 @@
+using Back.Features.Auth;
 using Back.Features.WeatherForecast;
 using Back.Infrastructure;
 using Back.Infrastructure.Persistence;
@@ -7,7 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
     .AddInfrastructure(builder.Configuration)
-    .AddWeatherForecastFeature();
+    .AddWeatherForecastFeature()
+    .AddAuthFeature();
 
 builder.Services.AddControllers();
 

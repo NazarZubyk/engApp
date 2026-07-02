@@ -7,7 +7,8 @@ PostgreSQL via Docker for local backend development.
 - `devops/docker-compose.yml` — Postgres service
 - `devops/Dockerfile` — Postgres image build
 - `devops/.env.example` — env var template
-- `devops/migrations/` — SQL init scripts (placeholder)
+- `devops/migrations/` — `node-pg-migrate` project (config, `package.json`, `.env`)
+- `devops/migrations/migrations/` — SQL migration files (e.g. `0001_auth.sql`)
 
 ## Patterns
 
@@ -25,6 +26,18 @@ docker compose up -d
 **Env vars** (`.env.example`): `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB`, `POSTGRES_PORT`
 
 Backend reads connection string from `DefaultConnection` in appsettings — not from Docker env directly.
+
+**Run DB migrations:**
+```bash
+cd devops/migrations
+cp .env.example .env   # if .env does not exist; set DATABASE_URL
+npm install
+npm run migrate
+```
+
+- Config: `migration.config.json` (JSON only — `node-pg-migrate` v8)
+- Env: `DATABASE_URL=postgres://engapp:engapp@localhost:5432/engapp` in `devops/migrations/.env`
+- New migration: `npm run create -- <name>` (creates file in `migrations/`)
 
 ## Do / Don't
 

@@ -6,7 +6,8 @@
 |------|------|
 | `back/` | .NET 10 Web API |
 | `client/` | React 19 + TypeScript + Vite 8 SPA |
-| `devops/` | Docker Compose (Postgres) |
+| `devops/` | Docker Compose (Postgres), DB migrations |
+| `devops/migrations/migrations/` | SQL migration files (`node-pg-migrate`) |
 | `back/back.http` | HTTP request examples |
 
 ## Stack
@@ -30,11 +31,14 @@
 # Postgres
 cd devops && docker compose up -d
 
-# Backend
+# Backend (https profile: 7221 + 5286)
 cd back && dotnet run
 
 # Frontend
 cd client && npm run dev
+
+# DB migrations (after Postgres is up)
+cd devops/migrations && npm install && npm run migrate
 ```
 
 Vite proxies `/api` → `https://localhost:7221` (see `client/vite.config.ts`).

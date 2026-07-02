@@ -10,6 +10,8 @@ public static class WebApplicationExtensions
         }
 
         app.UseHttpsRedirection();
+        app.UseAuthentication();
+        app.UseAuthorization();
         return app;
     }
 }
