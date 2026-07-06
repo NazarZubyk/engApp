@@ -16,7 +16,17 @@ _Endpoints:_ see handoff file.
 
 ## Frontend
 
-Not yet — see `handoff/auth-api.md`.
+_Key files:_
+- `client/src/features/auth/LoginPage.tsx` — sign-in form (user or admin)
+- `client/src/features/auth/AuthProvider.tsx` — session state, login/logout
+- `client/src/features/auth/authApi.ts` — login API calls
+- `client/src/features/auth/authStorage.ts` — JWT in `localStorage`
+- `client/src/features/auth/RequireAuth.tsx` — route guard
+- `client/src/features/main-menu/MainMenuPage.tsx` — post-login landing (placeholder)
+
+_Routes:_
+- `/login` — sign in
+- `/menu` — main menu (protected)
 
 ## Handoff
 
