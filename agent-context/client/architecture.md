@@ -42,14 +42,18 @@ await apiFetch('/api/grammar/topics', { token: session.token })
 - `/admin/grammar/import` — bulk import (admin only)
 - other paths → redirect to `/menu`
 
-**Features:** `client/src/features/{kebab-name}/` — e.g. `auth/`, `grammar/`, `grammar-admin/`.
+**Features:** `client/src/features/{kebab-name}/` — e.g. `auth/`, `grammar/`, `grammar-admin/`, `settings/`.
 
 **Auth:** JWT stored in `localStorage` (`engapp-auth`). `AuthProvider` + `RequireAuth` guard protected routes. `RequireAdmin` for admin-only routes. Token expiry checked on load.
+
+**Theme + settings:** `ThemeProvider` wraps routes in `App.tsx` and sets `html[data-theme]`. Tokens live in `index.css` under `[data-theme="light|dark|sepia|contrast|ocean|clash"]`. Preference in `localStorage` (`engapp-theme`). `SettingsMenu` is a fixed top-right overlay on all routes. Item visibility via `settingsRegistry.tsx` (`publicItems` / `userItems` / `adminItems`) — see `features/settings.md`.
 
 ## Do / Don't
 
 - Do: use `/api/...` paths in fetch calls (works with proxy in dev)
 - Do: add new feature UI under `client/src/features/{kebab-name}/`
 - Do: use `apiFetch` with `session.token` for authenticated endpoints
+- Do: add settings entries in `settingsRegistry.tsx` (correct audience array)
 - Do: update this file when adding routing, API client, or state management
 - Don't: hardcode `localhost:7221` in frontend code — use `/api` prefix
+- Don't: remount `SettingsMenu` inside individual pages

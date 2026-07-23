@@ -14,9 +14,11 @@ Alphabetical list of all agent context files. Read only what you need.
 | `features/weather-forecast.md` | ~35 | Reference feature slice |
 | `features/auth.md` | ~35 | Auth + users JWT API |
 | `features/grammar.md` | ~35 | Grammar topics + import (practice phase A2) |
+| `features/settings.md` | ~35 | Site-wide settings menu + themes |
 | `handoff/_TEMPLATE-api.md` | ~25 | Template for back ↔ front API contract |
 | `handoff/auth-api.md` | ~40 | Auth API contract |
 | `handoff/grammar-api.md` | ~60 | Grammar API contract |
+| `handoff/settings-api.md` | ~20 | Settings (client-only; no HTTP API) |
 | `handoff/{name}-api.md` | varies | Per-feature API contract (created by agents) |
 | `meta.md` | ~55 | How the context system works — extend or change it |
 | `monorepo.md` | ~35 | Folders, ports, run commands |

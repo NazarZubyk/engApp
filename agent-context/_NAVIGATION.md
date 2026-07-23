@@ -17,5 +17,6 @@ Read `AGENTS.md` first, then open **one row** from this table.
 | Understand the WeatherForecast sample | `features/weather-forecast.md` |
 | Work on Auth feature | `features/auth.md` + `handoff/auth-api.md` |
 | Work on Grammar feature | `features/grammar.md` + `handoff/grammar-api.md` |
+| Work on Settings feature | `features/settings.md` + `handoff/settings-api.md` |
 | Cross-cutting naming or git rules | `conventions.md` |
 | Change or extend the context system itself | `meta.md` |

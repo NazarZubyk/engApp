@@ -8,56 +8,61 @@ import { GrammarProgressPage } from './features/grammar/GrammarProgressPage'
 import { GrammarTopicsPage } from './features/grammar/GrammarTopicsPage'
 import { TopicDetailPage } from './features/grammar/TopicDetailPage'
 import { MainMenuPage } from './features/main-menu/MainMenuPage'
+import { SettingsMenu } from './features/settings/SettingsMenu'
+import { ThemeProvider } from './features/settings/ThemeProvider'
 import './App.css'
 
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route
-            path="/menu"
-            element={
-              <RequireAuth>
-                <MainMenuPage />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/grammar"
-            element={
-              <RequireAuth>
-                <GrammarTopicsPage />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/grammar/progress"
-            element={
-              <RequireAuth>
-                <GrammarProgressPage />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/grammar/:slug"
-            element={
-              <RequireAuth>
-                <TopicDetailPage />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path="/admin/grammar/import"
-            element={
-              <RequireAdmin>
-                <GrammarImportPage />
-              </RequireAdmin>
-            }
-          />
-          <Route path="*" element={<Navigate to="/menu" replace />} />
-        </Routes>
+        <ThemeProvider>
+          <SettingsMenu />
+          <Routes>
+            <Route path="/login" element={<LoginPage />} />
+            <Route
+              path="/menu"
+              element={
+                <RequireAuth>
+                  <MainMenuPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/grammar"
+              element={
+                <RequireAuth>
+                  <GrammarTopicsPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/grammar/progress"
+              element={
+                <RequireAuth>
+                  <GrammarProgressPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/grammar/:slug"
+              element={
+                <RequireAuth>
+                  <TopicDetailPage />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/admin/grammar/import"
+              element={
+                <RequireAdmin>
+                  <GrammarImportPage />
+                </RequireAdmin>
+              }
+            />
+            <Route path="*" element={<Navigate to="/menu" replace />} />
+          </Routes>
+        </ThemeProvider>
       </AuthProvider>
     </BrowserRouter>
   )
