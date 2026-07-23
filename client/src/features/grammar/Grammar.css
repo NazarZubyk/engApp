@@ -1,0 +1,261 @@
+.grammar-page {
+  flex: 1;
+  text-align: left;
+  padding: 32px 24px 48px;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.grammar-page h1 {
+  font-size: 36px;
+  margin: 0 0 8px;
+}
+
+.grammar-page-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.grammar-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.grammar-nav a,
+.grammar-link-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-h);
+  text-decoration: none;
+  font-size: 15px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.grammar-nav a:hover,
+.grammar-link-button:hover {
+  border-color: var(--accent-border);
+  background: var(--accent-bg);
+}
+
+.grammar-error {
+  margin: 0 0 16px;
+  color: #dc2626;
+  font-size: 15px;
+}
+
+.grammar-muted {
+  color: var(--text);
+  font-size: 15px;
+  margin: 0 0 16px;
+}
+
+.grammar-topic-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.grammar-topic-item {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.grammar-topic-link {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.grammar-topic-link:hover {
+  background: var(--accent-bg);
+}
+
+.grammar-topic-title {
+  color: var(--text-h);
+  font-size: 17px;
+}
+
+.grammar-topic-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  font-size: 14px;
+}
+
+.grammar-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 13px;
+  border: 1px solid var(--border);
+}
+
+.grammar-badge.not_started {
+  opacity: 0.8;
+}
+
+.grammar-badge.learning {
+  border-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.grammar-badge.practicing {
+  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.12);
+}
+
+.grammar-badge.strong {
+  border-color: #16a34a;
+  background: rgba(22, 163, 74, 0.12);
+}
+
+.grammar-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin: 20px 0 24px;
+}
+
+.grammar-stat {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.grammar-stat-label {
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.grammar-stat-value {
+  color: var(--text-h);
+  font-size: 20px;
+}
+
+.grammar-explanation {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  white-space: pre-wrap;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.grammar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.grammar-primary-button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.grammar-primary-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.grammar-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.grammar-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.grammar-table th,
+.grammar-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.grammar-table th {
+  color: var(--text-h);
+  font-weight: 500;
+}
+
+.grammar-table tr:last-child td {
+  border-bottom: none;
+}
+
+.grammar-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.grammar-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-h);
+  font-size: 16px;
+}
+
+.grammar-form select,
+.grammar-form textarea {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-h);
+  font: inherit;
+}
+
+.grammar-form textarea {
+  min-height: 280px;
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.grammar-success {
+  margin: 0;
+  color: #16a34a;
+  font-size: 15px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .grammar-error {
+    color: #f87171;
+  }
+
+  .grammar-success {
+    color: #4ade80;
+  }
+}

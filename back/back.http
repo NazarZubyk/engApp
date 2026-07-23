@@ -1,6 +1,80 @@
 @back_HostAddress = http://localhost:5286
+@adminToken = {{adminLogin.response.body.token}}
+@userToken = {{userLogin.response.body.token}}
 
 GET {{back_HostAddress}}/api/weatherforecast
 Accept: application/json
 
 ###
+
+# @name adminLogin
+POST {{back_HostAddress}}/api/auth/admin/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+###
+
+# @name userLogin
+POST {{back_HostAddress}}/api/auth/user/login
+Content-Type: application/json
+
+{
+  "login": "testuser",
+  "password": "password123"
+}
+
+###
+
+GET {{back_HostAddress}}/api/grammar/topics
+Authorization: Bearer {{userToken}}
+Accept: application/json
+
+###
+
+GET {{back_HostAddress}}/api/grammar/topics/present-perfect
+Authorization: Bearer {{userToken}}
+Accept: application/json
+
+###
+
+POST {{back_HostAddress}}/api/grammar/import
+Authorization: Bearer {{adminToken}}
+Content-Type: application/json
+
+{
+  "importMode": "create",
+  "topic": {
+    "slug": "present-perfect",
+    "title": "Present perfect",
+    "explanationMd": "## When we use it\nWe use the present perfect for past actions connected to now.",
+    "sortOrder": 10
+  },
+  "exercises": [
+    {
+      "prompt": "I ___ (see) that film.",
+      "slots": [
+        {
+          "accepted": ["have seen", "'ve seen"],
+          "distractors": ["saw", "see", "am seeing"]
+        }
+      ]
+    },
+    {
+      "prompt": "She ___ (not/go) and he ___ (not/eat).",
+      "slots": [
+        {
+          "accepted": ["didn't go", "did not go"],
+          "distractors": ["doesn't go", "went"]
+        },
+        {
+          "accepted": ["didn't eat", "did not eat"],
+          "distractors": ["doesn't eat", "ate"]
+        }
+      ]
+    }
+  ]
+}

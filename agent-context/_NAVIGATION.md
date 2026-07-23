@@ -16,5 +16,6 @@ Read `AGENTS.md` first, then open **one row** from this table.
 | Find ports, folders, or run commands | `monorepo.md` |
 | Understand the WeatherForecast sample | `features/weather-forecast.md` |
 | Work on Auth feature | `features/auth.md` + `handoff/auth-api.md` |
+| Work on Grammar feature | `features/grammar.md` + `handoff/grammar-api.md` |
 | Cross-cutting naming or git rules | `conventions.md` |
 | Change or extend the context system itself | `meta.md` |

@@ -13,8 +13,10 @@ Alphabetical list of all agent context files. Read only what you need.
 | `entry/frontend-feature.md` | ~55 | Attach to start frontend feature — agent checklist |
 | `features/weather-forecast.md` | ~35 | Reference feature slice |
 | `features/auth.md` | ~35 | Auth + users JWT API |
+| `features/grammar.md` | ~35 | Grammar topics + import (practice phase A2) |
 | `handoff/_TEMPLATE-api.md` | ~25 | Template for back ↔ front API contract |
 | `handoff/auth-api.md` | ~40 | Auth API contract |
+| `handoff/grammar-api.md` | ~60 | Grammar API contract |
 | `handoff/{name}-api.md` | varies | Per-feature API contract (created by agents) |
 | `meta.md` | ~55 | How the context system works — extend or change it |
 | `monorepo.md` | ~35 | Folders, ports, run commands |

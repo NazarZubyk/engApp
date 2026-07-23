@@ -13,6 +13,7 @@ public static class DependencyInjection
         services.AddJwtAuthentication(configuration);
         services.AddScoped<IAdminRepository, AdminRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IGrammarContentRepository, GrammarContentRepository>();
         return services;
     }
 }
